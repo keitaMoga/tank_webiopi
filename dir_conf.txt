@@ -1,0 +1,4 @@
+BACKUP_DIR=bak
+INDEX_DIR=/usr/share/webiopi/htdocs/index.html
+CONFIG_DIR=/etc/webiopi/config
+MAIN_CODE_DIR=/home/pi/moter.py
