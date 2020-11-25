@@ -1,0 +1,101 @@
+<html>
+<head>
+    <title>rc-raspi</title>
+    <script type="text/javascript" src="/webiopi.js"></script>
+    <script type="text/javascript">
+        function init() {
+            var btn, ct0, ct1;
+            ct0 = $("#box_left");
+            ct1 = $("#box_right");
+            btn = webiopi().createButton("r-f", "r_f", push_r_f_button, release_r_button);
+            ct1.append(btn);
+            btn = webiopi().createButton("r-b", "r_b", push_r_b_button, release_r_button);
+            ct1.append(btn);
+            btn = webiopi().createButton("f-rt", "f_rt", push_f_rt_button, release_rt_button);
+            ct1.append(btn);
+            btn = webiopi().createButton("b-rt", "b_rt", push_b_rt_button, release_rt_button);
+            ct1.append(btn);
+            btn = webiopi().createButton("cam-srt", "cam_srt", push_photo_start);
+            ct1.append(btn);
+            btn = webiopi().createButton("l-f", "l_f", push_l_f_button, release_l_button);
+            ct0.append(btn);
+            btn = webiopi().createButton("l-b", "l_b", push_l_b_button, release_l_button);
+            ct0.append(btn);
+            btn = webiopi().createButton("f-lt", "f_lt", push_f_lt_button, release_lt_button);
+            ct0.append(btn);
+            btn = webiopi().createButton("b-lt", "b_lt", push_b_lt_button, release_lt_button);
+            ct0.append(btn);
+            btn = webiopi().createButton("cam-stp", "cam_stp", push_photo_stop);
+            ct0.append(btn);
+        }
+        function push_r_f_button() {
+            webiopi().callMacro("right_motor_forward");
+        }
+        function push_r_b_button() {
+            webiopi().callMacro("right_motor_back");
+        }
+        function release_r_button() {
+            webiopi().callMacro("right_motor_stop");
+        }
+        function push_l_f_button() {
+            webiopi().callMacro("left_motor_forward");
+        }
+        function push_l_b_button() {
+            webiopi().callMacro("left_motor_back");
+        }
+        function release_l_button() {
+            webiopi().callMacro("left_motor_stop");
+        }
+        function push_f_rt_button() {
+            webiopi().callMacro("right_servo_forward");
+        }
+        function push_b_rt_button() {
+            webiopi().callMacro("right_servo_back");
+        }
+        function release_rt_button() {
+            webiopi().callMacro("right_servo_stop");
+        }
+        function push_f_lt_button() {
+            webiopi().callMacro("left_servo_forward");
+        }
+        function push_b_lt_button() {
+            webiopi().callMacro("left_servo_back");
+        }
+        function release_lt_button() {
+            webiopi().callMacro("left_servo_stop");
+        }
+        function push_photo_start() {
+            webiopi().callMacro("photo_start");
+        }
+        function push_photo_stop() {
+            webiopi().callMacro("photo_stop");
+        }
+        webiopi().ready(init);
+ 
+    </script>
+    <style type="text/css">
+        button{
+            display:block;
+            margin:5px 5px 5px 5px;
+            width:160px;
+            height:100px;
+            font-size:24pt;
+            font-weight:bold;
+            color:black;
+        }
+    </style>
+</head>
+<body margin-top="100">
+    <div style="float:left; width:20%;">
+        <div id="box_left" align ="center"></div>
+    </div>
+    <div style="float:left; width:60%;">
+        <div id="streaming" align ="center">
+            <img src="http://192.168.10.13:8080/?action=stream" />
+        </div>
+    </div>
+    <div style="float:left; width:20%;">
+        <div id="box_right" align ="center"></div>
+    </div>
+</body>
+</html>
