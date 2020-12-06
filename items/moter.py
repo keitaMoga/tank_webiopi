@@ -75,12 +75,12 @@ def left_moter_stop():
 @webiopi.macro
 def right_servo_forward():
     global r_servo_state
-    r_servo_state = 1
+    r_servo_state = -1
 
 @webiopi.macro
 def right_servo_back():
     global r_servo_state
-    r_servo_state = -1
+    r_servo_state = 1
 
 @webiopi.macro
 def right_servo_stop():
@@ -90,12 +90,12 @@ def right_servo_stop():
 @webiopi.macro
 def left_servo_forward():
     global l_servo_state
-    l_servo_state = 1
+    l_servo_state = -1
 
 @webiopi.macro
 def left_servo_back():
     global l_servo_state
-    l_servo_state = -1
+    l_servo_state = 1
 
 @webiopi.macro
 def left_servo_stop():
