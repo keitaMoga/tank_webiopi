@@ -19,6 +19,26 @@ MAX_PULSE_WIDTH=1250
 pwm = Adafruit_PCA9685.PCA9685()
 pwm.set_pwm_freq(PWM_FREQUENCY)
 
+r_servo_val=MIN_SERVO_PULSE_WIDH
+l_servo_val=MIN_SERVO_PULSE_WIDH
+r_servo_state=0
+l_servo_state=0
+
+while True:
+    if r_servo_state != 0:
+        r_servo_val = r_servo_val + r_servo_state
+        if r_servo_val < MIN_SERVO_PULSE_WIDH or r_servo_val > MAX_SERVO_PULSE_WIDH:
+            r_servo_val = r_servo_val - r_servo_state
+        else
+            pwm.set_pwm(R_SERVO_CH, 0, r_servo_val)
+
+    if l_servo_state != 0:
+        l_servo_val = l_servo_val + l_servo_state
+        if l_servo_val < MIN_SERVO_PULSE_WIDH or l_servo_val > MAX_SERVO_PULSE_WIDH:
+            l_servo_val = l_servo_val - l_servo_state
+        else
+            pwm.set_pwm(L_SERVO_CH, 0, l_servo_val)
+
 def loop():
     webiopi.sleep(1)
 
@@ -47,3 +67,33 @@ def left_moter_back():
 def left_moter_stop():
     pwm.set_pwm(L_MOTER_FWD_CH, 0, 0)
     pwm.set_pwm(L_MOTER_BCK_CH, 0, 0)
+
+@webiopi.macro
+def right_servo_forward():
+    r_servo_state = 1
+
+@webiopi.macro
+def right_servo_back():
+    r_servo_state = -1
+
+@webiopi.macro
+def right_servo_stop():
+    r_servo_state = 0
+
+@webiopi.macro
+def left_servo_forward():
+    l_servo_state = 1
+
+@webiopi.macro
+def left_servo_back():
+    l_servo_state = -1
+
+@webiopi.macro
+def left_servo_stop():
+    l_servo_state = 0
+
+@webiopi.macro
+def photo_start():
+
+@webiopi.macro
+def photo_stop():
