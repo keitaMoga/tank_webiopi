@@ -21,10 +21,8 @@ pwm.set_pwm_freq(PWM_FREQUENCY)
 
 r_servo_val=MIN_SERVO_PULSE_WIDH
 l_servo_val=MIN_SERVO_PULSE_WIDH
-r_servo_state=0
-l_servo_state=0
 
-while True:
+def right_servo_controller(r_servo_state):
     if r_servo_state != 0:
         r_servo_val = r_servo_val + r_servo_state
         if r_servo_val < MIN_SERVO_PULSE_WIDH or r_servo_val > MAX_SERVO_PULSE_WIDH:
@@ -32,6 +30,7 @@ while True:
         else:
             pwm.set_pwm(R_SERVO_CH, 0, r_servo_val)
 
+def left_servo_controller(l_servo_state):
     if l_servo_state != 0:
         l_servo_val = l_servo_val + l_servo_state
         if l_servo_val < MIN_SERVO_PULSE_WIDH or l_servo_val > MAX_SERVO_PULSE_WIDH:
@@ -70,24 +69,24 @@ def left_moter_stop():
 
 @webiopi.macro
 def right_servo_forward():
-    r_servo_state = 1
+    right_servo_controller(1)
 
 @webiopi.macro
 def right_servo_back():
-    r_servo_state = -1
+    right_servo_controller(-1)
 
 @webiopi.macro
 def right_servo_stop():
-    r_servo_state = 0
+    right_servo_controller(0)
 
 @webiopi.macro
 def left_servo_forward():
-    l_servo_state = 1
+    left_servo_controller(1)
 
 @webiopi.macro
 def left_servo_back():
-    l_servo_state = -1
+    left_servo_controller(-1)
 
 @webiopi.macro
 def left_servo_stop():
-    l_servo_state = 0
+    left_servo_controller(0)
