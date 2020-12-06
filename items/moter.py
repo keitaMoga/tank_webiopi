@@ -24,17 +24,19 @@ l_servo_val=MIN_SERVO_PULSE_WIDH
 
 def right_servo_controller(r_servo_state):
     if r_servo_state != 0:
-        global r_servo_val = global r_servo_val + r_servo_state
+        global r_servo_val
+        r_servo_val = r_servo_val + r_servo_state
         if r_servo_val < MIN_SERVO_PULSE_WIDH or r_servo_val > MAX_SERVO_PULSE_WIDH:
-            global r_servo_val = global r_servo_val - r_servo_state
+            r_servo_val = r_servo_val - r_servo_state
         else:
             pwm.set_pwm(R_SERVO_CH, 0, global r_servo_val)
 
 def left_servo_controller(l_servo_state):
     if l_servo_state != 0:
-        global l_servo_val = global l_servo_val + l_servo_state
+        global l_servo_val
+        l_servo_val = l_servo_val + l_servo_state
         if l_servo_val < MIN_SERVO_PULSE_WIDH or l_servo_val > MAX_SERVO_PULSE_WIDH:
-            global l_servo_val = global l_servo_val - l_servo_state
+            l_servo_val = l_servo_val - l_servo_state
         else:
             pwm.set_pwm(L_SERVO_CH, 0, global l_servo_val)
 
