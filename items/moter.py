@@ -4,10 +4,10 @@ import Adafruit_PCA9685
 
 PWM_FREQUENCY=60
 
-R_MOTOR_FWD_CH = 7
-R_MOTOR_BCK_CH = 6
-L_MOTOR_FWD_CH = 8
-L_MOTOR_BCK_CH = 9
+R_MOTER_FWD_CH = 7
+R_MOTER_BCK_CH = 6
+L_MOTER_FWD_CH = 8
+L_MOTER_BCK_CH = 9
 R_SERVO_CH = 4
 L_SERVO_CH = 11
 
@@ -23,27 +23,27 @@ def loop():
     webiopi.sleep(1)
 
 @webiopi.macro
-def right_motor_forward():
-    pwm.set_pwm(R_MOTOR_FWD_CH, 0, MAX_PULSE_WIDTH)
+def right_moter_forward():
+    pwm.set_pwm(R_MOTER_FWD_CH, 0, MAX_PULSE_WIDTH)
 
 @webiopi.macro
-def right_motor_back():
-    pwm.set_pwm(R_MOTOR_BCK_CH, 0, MAX_PULSE_WIDTH)
+def right_moter_back():
+    pwm.set_pwm(R_MOTER_BCK_CH, 0, MAX_PULSE_WIDTH)
 
 @webiopi.macro
-def right_motor_stop():
-    pwm.set_pwm(R_MOTOR_FWD_CH, 0, 0)
-    pwm.set_pwm(R_MOTOR_BCK_CH, 0, 0)
+def right_moter_stop():
+    pwm.set_pwm(R_MOTER_FWD_CH, 0, 0)
+    pwm.set_pwm(R_MOTER_BCK_CH, 0, 0)
 
 @webiopi.macro
-def left_motor_forward():
-    pwm.set_pwm(L_MOTOR_FWD_CH, 0, MAX_PULSE_WIDTH)
+def left_moter_forward():
+    pwm.set_pwm(L_MOTER_FWD_CH, 0, MAX_PULSE_WIDTH)
 
 @webiopi.macro
-def left_motor_back():
-    pwm.set_pwm(L_MOTOR_BCK_CH, 0, MAX_PULSE_WIDTH)
+def left_moter_back():
+    pwm.set_pwm(L_MOTER_BCK_CH, 0, MAX_PULSE_WIDTH)
 
 @webiopi.macro
-def left_motor_stop():
-    pwm.set_pwm(L_MOTOR_FWD_CH, 0, 0)
-    pwm.set_pwm(L_MOTOR_BCK_CH, 0, 0)
+def left_moter_stop():
+    pwm.set_pwm(L_MOTER_FWD_CH, 0, 0)
+    pwm.set_pwm(L_MOTER_BCK_CH, 0, 0)

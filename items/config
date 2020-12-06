@@ -23,7 +23,7 @@
 # name = sourcefile
 #   each sourcefile may have setup, loop and destroy functions and macros
 #myscript = /home/pi/webiopi/examples/scripts/macros/script.py
-myscript = /home/pi/motor.py
+myscript = /home/pi/moter.py
 
 #------------------------------------------------------------------------#
 
