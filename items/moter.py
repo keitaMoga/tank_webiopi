@@ -21,8 +21,15 @@ pwm.set_pwm_freq(PWM_FREQUENCY)
 
 r_servo_val=MIN_SERVO_PULSE_WIDH
 l_servo_val=MIN_SERVO_PULSE_WIDH
+r_servo_state=0
+l_servo_state=0
 
-def right_servo_controller(r_servo_state):
+def loop():
+    global r_servo_state
+    global l_servo_state
+
+    webiopi.sleep(1)
+
     if r_servo_state != 0:
         global r_servo_val
         r_servo_val = r_servo_val + r_servo_state
@@ -31,7 +38,6 @@ def right_servo_controller(r_servo_state):
         else:
             pwm.set_pwm(R_SERVO_CH, 0, r_servo_val)
 
-def left_servo_controller(l_servo_state):
     if l_servo_state != 0:
         global l_servo_val
         l_servo_val = l_servo_val + l_servo_state
@@ -39,9 +45,6 @@ def left_servo_controller(l_servo_state):
             l_servo_val = l_servo_val - l_servo_state
         else:
             pwm.set_pwm(L_SERVO_CH, 0, l_servo_val)
-
-def loop():
-    webiopi.sleep(1)
 
 @webiopi.macro
 def right_moter_forward():
@@ -71,24 +74,30 @@ def left_moter_stop():
 
 @webiopi.macro
 def right_servo_forward():
-    right_servo_controller(1)
+    global r_servo_state
+    r_servo_state = 1
 
 @webiopi.macro
 def right_servo_back():
-    right_servo_controller(-1)
+    global r_servo_state
+    r_servo_state = -1
 
 @webiopi.macro
 def right_servo_stop():
-    right_servo_controller(0)
+    global r_servo_state
+    r_servo_state = 0
 
 @webiopi.macro
 def left_servo_forward():
-    left_servo_controller(1)
+    global l_servo_state
+    r_servo_state = 1
 
 @webiopi.macro
 def left_servo_back():
-    left_servo_controller(-1)
+    global l_servo_state
+    r_servo_state = -1
 
 @webiopi.macro
 def left_servo_stop():
-    left_servo_controller(0)
+    global l_servo_state
+    r_servo_state = 0
