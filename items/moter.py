@@ -29,14 +29,14 @@ while True:
         r_servo_val = r_servo_val + r_servo_state
         if r_servo_val < MIN_SERVO_PULSE_WIDH or r_servo_val > MAX_SERVO_PULSE_WIDH:
             r_servo_val = r_servo_val - r_servo_state
-        else
+        else:
             pwm.set_pwm(R_SERVO_CH, 0, r_servo_val)
 
     if l_servo_state != 0:
         l_servo_val = l_servo_val + l_servo_state
         if l_servo_val < MIN_SERVO_PULSE_WIDH or l_servo_val > MAX_SERVO_PULSE_WIDH:
             l_servo_val = l_servo_val - l_servo_state
-        else
+        else:
             pwm.set_pwm(L_SERVO_CH, 0, l_servo_val)
 
 def loop():
