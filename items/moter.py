@@ -91,9 +91,3 @@ def left_servo_back():
 @webiopi.macro
 def left_servo_stop():
     l_servo_state = 0
-
-@webiopi.macro
-def photo_start():
-
-@webiopi.macro
-def photo_stop():
